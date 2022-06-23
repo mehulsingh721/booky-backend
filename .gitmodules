@@ -1,0 +1,3 @@
+[submodule "booky"]
+	path = booky
+	url = https://github.com/mehulsingh721/booky-backend.git
