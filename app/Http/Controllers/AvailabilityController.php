@@ -40,6 +40,24 @@ class AvailabilityController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function assignEvent(Request $request)
+    {
+        $eventId = $request->query("eventId");
+        $availabilityId = $request->query("availabilityId");
+
+        $availability = Availability::find($availabilityId);
+        $availability->update([
+            'event_id' => $eventId
+        ]);
+        return $availability;
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

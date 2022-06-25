@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
         Route::get('/availabilities/availability', 'show');
         Route::post('/availabilities/create', 'store');
         Route::put('/availabilities/update', 'update');
+        Route::put('/availabilities/event', 'assignEvent');
         Route::delete('/availabilities/delete', 'destroy');
     });
 });
