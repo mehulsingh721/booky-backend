@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('availability', function(Blueprint $table){
+        Schema::create('availabilities', function(Blueprint $table){
             $table->id();
             $table->string('name');
             $table->json('rules');
             $table->string('timezone');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('event_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 

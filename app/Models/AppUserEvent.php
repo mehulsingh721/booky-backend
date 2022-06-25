@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AppUserEvent extends Model
 {
     use HasFactory;
-    protected $table = 'event';
+    protected $table = 'events';
     protected $fillable = [
         'name',
         'meetLocation',
@@ -22,11 +22,11 @@ class AppUserEvent extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, "user_id");
+        return $this->belongsTo(User::class);
     }
 
     public function availability()
     {
-        return $this->hasOne(availability::class, "availability_id");
+        return $this->hasOne(Availability::class);
     }
 }

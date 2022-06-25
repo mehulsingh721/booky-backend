@@ -29,7 +29,13 @@ class AvailabilityController extends Controller
      */
     public function store(Request $request)
     {
-        $availability = Availability::create($request->all());
+        $userId = $request->query("userId");
+        $availability = Availability::create([
+            'name' => $request->name,
+            'rules' => $request->rules,
+            'timezone' => $request->timezone,
+            'user_id' => $userId
+        ]);
         return $availability;
     }
 

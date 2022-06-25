@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Availability extends Model
 {
     use HasFactory;
-    protected $table = "availability";
+    protected $table = "availabilities";
     protected $fillable = [
         'name',
         'rules',
-        'timezone'
+        'timezone',
+        'user_id',
+        'event_id'
     ];
     protected $casts = [
         'rules' => 'json',
@@ -25,6 +27,6 @@ class Availability extends Model
     }
     public function event()
     {
-        return $this->belongsTo(AppUserEvent::class, "app_user_event_id");
+        return $this->belongsTo(AppUserEvent::class, "event_id");
     }
 }
