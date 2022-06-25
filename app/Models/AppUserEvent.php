@@ -13,6 +13,7 @@ class AppUserEvent extends Model
         'name',
         'meetLocation',
         'description',
+        'color',
         'eventLink',
         'type',
         'inviteeQuestions',

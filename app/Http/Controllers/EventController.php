@@ -37,6 +37,7 @@ class EventController extends Controller
             'meetLocation' => $request->meetLocation,
             'description' => $request->description,
             'eventLink' => $request->eventLink,
+            'color' => $request->color,
             'type' => $request->type,
             'inviteeQuestions' => $request->inviteeQuestions,
             'user_id' => $user->id

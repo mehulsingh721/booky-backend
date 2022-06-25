@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('eventLink');
             $table->string('type');
+            $table->string('color')->nullable();
             $table->string('inviteeQuestions');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
         });
