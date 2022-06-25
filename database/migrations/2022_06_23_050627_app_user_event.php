@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('eventLink');
             $table->string('type');
             $table->string('inviteeQuestions');
-            $table->foreignIdFor(User::class);
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('event');
     }
 };

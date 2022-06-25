@@ -32,8 +32,16 @@ class EventController extends Controller
     {
         $userId = $request->query("userId");
         $user = User::find($userId);
-        /* $event = AppUserEvent::create($request->all()); */
-        $event = $user->events()->create($request->all());
+        $event = AppUserEvent::create([
+            'name' => $request->name,
+            'meetLocation' => $request->meetLocation,
+            'description' => $request->description,
+            'eventLink' => $request->eventLink,
+            'type' => $request->type,
+            'inviteeQuestions' => $request->inviteeQuestions,
+            'user_id' => $user->id
+        ]);
+        /* $event = $user->events()->create($request->all()); */
         return response()->json($event, 201);
     }
 

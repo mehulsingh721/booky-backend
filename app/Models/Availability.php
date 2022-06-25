@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AppUserEvent extends Model
+class Availability extends Model
 {
     use HasFactory;
-    protected $table = 'event';
+    protected $table = "availability";
     protected $fillable = [
         'name',
-        'meetLocation',
-        'description',
-        'eventLink',
-        'type',
-        'inviteeQuestions',
-        'user_id'
+        'rules',
+        'timezone'
+    ];
+    protected $casts = [
+        'rules' => 'json',
     ];
     public $timestamps = false;
 
@@ -24,9 +23,8 @@ class AppUserEvent extends Model
     {
         return $this->belongsTo(User::class, "user_id");
     }
-
-    public function availability()
+    public function event()
     {
-        return $this->hasOne(availability::class, "availability_id");
+        return $this->belongsTo(AppUserEvent::class, "app_user_event_id");
     }
 }

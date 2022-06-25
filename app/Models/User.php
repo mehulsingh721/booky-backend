@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(AppUserEvent::class);
     }
+
+    public function availability()
+    {
+        return $this->hasMany(availability::class);
+    }
 }
