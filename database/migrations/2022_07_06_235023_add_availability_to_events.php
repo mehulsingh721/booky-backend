@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::statement("ALTER TABLE events ALTER COLUMN invitee_questions TYPE json USING (invitee_questions::json);");
+        Schema::table('events', function (Blueprint $table) {
+            $table->foreignId('availability_id')->nullable()->constrained()->onDelete('cascade');
+        });
     }
 
     /**
@@ -24,5 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('events', function (Blueprint $table) {
+            //
+        });
     }
 };
